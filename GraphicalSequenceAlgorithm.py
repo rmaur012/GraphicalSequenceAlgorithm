@@ -1,18 +1,27 @@
 #Setting up the sequence list
-sizeOfSeq = raw_input("How many vetices are there? ")
-sizeOfSeq = int(sizeOfSeq)
-index = 0
-sequence = [None]*sizeOfSeq
+try:
+        sizeOfSeq = raw_input("How many vetices are there? ")
+        sizeOfSeq = int(sizeOfSeq)
+        index = 0
+        sequence = [None]*sizeOfSeq
+except ValueError:
+        print 'A Non-Numerical Value Was Entered. Please Try Again And Enter With A Numerical Value.'
+        quit()
+
 
 #The user inputs the degrees of the vertices, then sorts it in reverse.
 #It will also calculate sum of the sequence of degrees to then be evaluated in the second if statement after the loop
 seqSum = 0
 while sizeOfSeq>0:
-        sequence[index]=int(raw_input("Enter The Degree For A Vertex: "))
-        seqSum = seqSum + sequence[index]
-        sizeOfSeq=sizeOfSeq-1
-        index=index+1
+        try:
+                sequence[index]=int(raw_input("Enter The Degree For A Vertex: "))
+                seqSum = seqSum + sequence[index]
+                sizeOfSeq=sizeOfSeq-1
+                index=index+1
+        except ValueError:
+                print 'A Non-Numerical Value Was Entered. Please Enter A Numerical Value.'
 sequence.sort(reverse = True)
+
 
 #Checks if a degree is bigger or equal to number of vertices, 
 #then will check if the sum of the sequence = 2*(number of edges), which would make it not graphical if it does not equal,
